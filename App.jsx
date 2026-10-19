@@ -2,7 +2,7 @@
 import { useState, useEffect } from 'react';
 import './App.css';
 
-const API = 'http://localhost:3001/api/links';
+const API = 'https://hackhers-linkpulse.onrender.com/api/links';
 
 function App() {
   const [links, setLinks] = useState([]);
