@@ -1,22 +1,37 @@
 
+/* =========================
+   GLOBAL STYLES
+========================= */
+
 * {
   box-sizing: border-box;
+}
+
+html {
+  min-width: 320px;
+  scroll-behavior: smooth;
 }
 
 body {
   margin: 0;
   font-family: Arial, Helvetica, sans-serif;
   background: #f7f7fc;
-  color: #22213a;
+  color: #27213a;
 }
 
 button,
-input {
+input,
+select {
   font: inherit;
 }
 
 button {
   cursor: pointer;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+button:hover:not(:disabled) {
+  transform: translateY(-1px);
 }
 
 button:disabled {
@@ -24,14 +39,29 @@ button:disabled {
   opacity: 0.7;
 }
 
+input,
+select {
+  color: #27213a;
+}
+
+input::placeholder {
+  color: #858095;
+  opacity: 1;
+}
+
+/* =========================
+   TOP NAVIGATION
+========================= */
+
 .topbar {
-  height: 72px;
+  min-height: 72px;
   padding: 0 7%;
   background: #ffffff;
   border-bottom: 1px solid #eae8f2;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 16px;
 }
 
 .brand {
@@ -44,20 +74,25 @@ button:disabled {
 }
 
 .brand-icon {
-  width: 35px;
-  height: 35px;
+  width: 38px;
+  height: 38px;
   border-radius: 11px;
   display: grid;
   place-items: center;
-  background: #5c43d6;
-  color: white;
-  font-size: 24px;
+  background: linear-gradient(135deg, #7659ef, #4d36c7);
+  color: #ffffff;
+  font-size: 25px;
+  box-shadow: 0 4px 10px #6046d833;
 }
 
 .team-label {
   color: #77738b;
   font-size: 13px;
 }
+
+/* =========================
+   MAIN DASHBOARD
+========================= */
 
 .dashboard {
   max-width: 1100px;
@@ -74,12 +109,16 @@ button:disabled {
   font-size: 12px;
   font-weight: 800;
   letter-spacing: 2px;
+  margin-bottom: 10px;
 }
 
 .welcome h1 {
+  color: #27213a;
   font-size: clamp(30px, 5vw, 45px);
+  line-height: 1.15;
   margin: 12px 0;
   letter-spacing: -1.5px;
+  font-weight: 800;
 }
 
 .welcome h1 span {
@@ -93,6 +132,14 @@ button:disabled {
   line-height: 1.6;
 }
 
+.subtitle {
+  font-size: 15px;
+}
+
+/* =========================
+   STATISTICS CARDS
+========================= */
+
 .stats {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -104,7 +151,7 @@ button:disabled {
 .create-card,
 .link-card,
 .empty-state {
-  background: white;
+  background: #ffffff;
   border: 1px solid #e9e6f3;
   border-radius: 16px;
   box-shadow: 0 5px 20px #28205b08;
@@ -112,6 +159,12 @@ button:disabled {
 
 .stat-card {
   padding: 22px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.stat-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 9px 25px #28205b12;
 }
 
 .stat-card p {
@@ -124,7 +177,12 @@ button:disabled {
   font-size: 32px;
   margin: 0;
   color: #30245f;
+  font-weight: 800;
 }
+
+/* =========================
+   CREATE LINK CARD
+========================= */
 
 .create-card {
   padding: 27px;
@@ -133,7 +191,10 @@ button:disabled {
 
 .create-card h2,
 .section-heading h2 {
+  color: #27213a;
   margin: 0 0 8px;
+  font-size: 23px;
+  font-weight: 750;
 }
 
 .create-card > p {
@@ -150,10 +211,14 @@ button:disabled {
 .create-form input {
   min-width: 0;
   flex: 1;
+  width: 100%;
   padding: 14px 16px;
   border: 1px solid #dedbea;
   border-radius: 10px;
   outline: none;
+  background: #ffffff;
+  color: #27213a;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
 .create-form input:focus {
@@ -161,28 +226,52 @@ button:disabled {
   box-shadow: 0 0 0 3px #654be01a;
 }
 
-.create-form button,
-.link-actions button {
+.create-form button {
+  flex-shrink: 0;
   border: none;
   border-radius: 10px;
-  padding: 13px 18px;
+  padding: 13px 20px;
   background: #6046d8;
-  color: white;
+  color: #ffffff;
   font-weight: 700;
+}
+
+.create-form button:hover:not(:disabled) {
+  background: #4d36c7;
+}
+
+.helper-text {
+  margin-top: 10px !important;
+  color: #858095 !important;
+  font-size: 12px !important;
 }
 
 .message {
   color: #5140b8;
   font-size: 14px;
-  margin-bottom: 0;
+  margin: 14px 0 0;
   overflow-wrap: anywhere;
+  line-height: 1.5;
+}
+
+/* =========================
+   LINKS SECTION HEADER
+========================= */
+
+.links-section {
+  width: 100%;
 }
 
 .section-heading {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: 15px;
   margin-bottom: 18px;
+}
+
+.section-heading h2 {
+  margin-bottom: 5px;
 }
 
 .section-heading p {
@@ -193,33 +282,85 @@ button:disabled {
 .refresh-button {
   padding: 10px 14px;
   border: 1px solid #dedbea;
-  background: white;
+  background: #ffffff;
   border-radius: 9px;
   color: #4c3b9c;
+  font-weight: 600;
 }
+
+.refresh-button:hover {
+  background: #f0edfb;
+}
+
+/* =========================
+   SEARCH AND FILTER
+========================= */
+
+.link-tools {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 18px;
+}
+
+.link-tools input,
+.link-tools select {
+  min-width: 0;
+  padding: 12px 14px;
+  border: 1px solid #dedbea;
+  border-radius: 10px;
+  outline: none;
+  background: #ffffff;
+  color: #27213a;
+}
+
+.link-tools input {
+  flex: 1;
+}
+
+.link-tools input:focus,
+.link-tools select:focus {
+  border-color: #654be0;
+  box-shadow: 0 0 0 3px #654be01a;
+}
+
+.link-tools select {
+  width: 165px;
+}
+
+/* =========================
+   LINKS LIST
+========================= */
 
 .links-list {
   display: grid;
-  gap: 13px;
+  gap: 15px;
 }
 
 .link-card {
-  padding: 20px;
+  padding: 22px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 18px;
+  gap: 20px;
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.link-card:hover {
+  box-shadow: 0 8px 25px #28205b12;
 }
 
 .link-info {
   min-width: 0;
+  flex: 1;
 }
 
 .short-url {
+  display: inline-block;
   color: #5a40cf;
   font-weight: 700;
   text-decoration: none;
   overflow-wrap: anywhere;
+  line-height: 1.5;
 }
 
 .short-url:hover {
@@ -230,21 +371,32 @@ button:disabled {
   color: #77758b;
   font-size: 13px;
   overflow-wrap: anywhere;
+  line-height: 1.5;
   margin: 9px 0;
 }
 
 .link-meta {
   display: flex;
   align-items: center;
+  flex-wrap: wrap;
   gap: 12px;
   font-size: 12px;
   color: #77758b;
+  margin-top: 10px;
 }
+
+/* =========================
+   ACTIVE / DISABLED LABELS
+========================= */
 
 .active,
 .inactive {
-  padding: 5px 9px;
+  display: inline-flex;
+  align-items: center;
+  padding: 5px 10px;
   border-radius: 20px;
+  font-size: 12px;
+  font-weight: 700;
 }
 
 .active {
@@ -257,15 +409,63 @@ button:disabled {
   color: #b74737;
 }
 
+/* =========================
+   QR CODE
+========================= */
+
+.qr-container {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 15px;
+  font-size: 12px;
+}
+
+.qr-image {
+  display: block;
+  width: 90px;
+  height: 90px;
+  object-fit: contain;
+  padding: 4px;
+  background: #ffffff;
+  border: 1px solid #e9e6f3;
+  border-radius: 8px;
+}
+
+.qr-container a {
+  color: #5a40cf;
+  text-decoration: none;
+  font-weight: 700;
+}
+
+.qr-container a:hover {
+  text-decoration: underline;
+}
+
+/* =========================
+   ACTION BUTTONS
+========================= */
+
 .link-actions {
   display: flex;
   flex-shrink: 0;
+  flex-wrap: wrap;
   gap: 8px;
 }
 
 .link-actions button {
-  padding: 10px 13px;
+  border: none;
+  border-radius: 9px;
+  padding: 10px 14px;
+  background: #6046d8;
+  color: #ffffff;
   font-size: 13px;
+  font-weight: 700;
+}
+
+.link-actions button:hover {
+  background: #4d36c7;
 }
 
 .link-actions .toggle-button {
@@ -273,34 +473,116 @@ button:disabled {
   color: #5540b6;
 }
 
+.link-actions .toggle-button:hover {
+  background: #e4defa;
+}
+
+.link-actions .delete-button {
+  background: #fff0ed;
+  color: #b74737;
+}
+
+.link-actions .delete-button:hover {
+  background: #ffe1dc;
+}
+
+/* =========================
+   EMPTY STATE
+========================= */
+
 .empty-state {
   text-align: center;
-  padding: 40px 20px;
+  padding: 42px 20px;
+}
+
+.empty-state h3 {
+  color: #30245f;
+  margin: 0 0 10px;
+  font-size: 20px;
 }
 
 .empty-state p {
   color: #77758b;
   font-size: 14px;
+  line-height: 1.6;
 }
+
+/* =========================
+   FOOTER
+========================= */
 
 footer {
   text-align: center;
   color: #89859d;
   font-size: 13px;
   margin-top: 45px;
+  padding-bottom: 20px;
 }
 
-@media (max-width: 650px) {
+/* =========================
+   TABLET RESPONSIVENESS
+========================= */
+
+@media (max-width: 850px) {
   .topbar {
     padding: 0 5%;
   }
 
+  .dashboard {
+    width: 92%;
+  }
+
+  .link-card {
+    align-items: flex-start;
+  }
+
+  .link-actions {
+    max-width: 180px;
+  }
+}
+
+/* =========================
+   MOBILE RESPONSIVENESS
+========================= */
+
+@media (max-width: 650px) {
+  .topbar {
+    min-height: 65px;
+    padding: 12px 5%;
+  }
+
+  .brand {
+    font-size: 20px;
+  }
+
+  .brand-icon {
+    width: 33px;
+    height: 33px;
+    font-size: 22px;
+  }
+
   .team-label {
-    font-size: 11px;
+    max-width: 145px;
+    font-size: 10px;
+    text-align: right;
   }
 
   .dashboard {
-    margin-top: 30px;
+    width: 92%;
+    margin: 30px auto;
+  }
+
+  .welcome {
+    margin-bottom: 23px;
+  }
+
+  .welcome h1 {
+    font-size: clamp(29px, 8vw, 38px);
+    letter-spacing: -1px;
+  }
+
+  .subtitle {
+    font-size: 14px;
   }
 
   .stats {
@@ -312,164 +594,87 @@ footer {
     padding: 18px;
   }
 
-  .create-form,
-  .link-card {
+  .stat-card h2 {
+    font-size: 28px;
+  }
+
+  .create-card {
+    padding: 20px;
+    margin-bottom: 30px;
+  }
+
+  .create-form {
     flex-direction: column;
     align-items: stretch;
   }
 
+  .create-form input {
+    width: 100%;
+  }
+
   .create-form button {
+    width: 100%;
+    min-height: 46px;
+  }
+
+  .section-heading {
+    align-items: flex-start;
+    flex-wrap: wrap;
+  }
+
+  .link-tools {
+    flex-direction: column;
+  }
+
+  .link-tools input,
+  .link-tools select {
+    width: 100%;
+  }
+
+  .link-card {
+    padding: 18px;
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .link-actions {
+    max-width: none;
     width: 100%;
   }
 
   .link-actions button {
     flex: 1;
+    min-width: 75px;
+  }
+
+  .qr-container {
+    align-items: center;
+  }
+
+  footer {
+    margin-top: 32px;
   }
 }
 
-/* Fix heading visibility */
-.welcome h1,
-.create-card h2,
-.section-heading h2,
-.link-info h2,
-.empty-state h2 {
-  color: #27213a;
-}
+/* =========================
+   SMALL MOBILE SCREENS
+========================= */
 
-/* Keep highlighted heading text purple */
-.welcome h1 span {
-  color: #6046d8;
-}
-
-/* Keep form fields readable */
-.create-form input {
-  color: #27213a;
-  background-color: #ffffff;
-}
-
-.create-form input::placeholder {
-  color: #858095;
-  opacity: 1;
-}
-
-/* Keep cards and dashboard in light mode */
-.stat-card,
-.create-card,
-.link-card,
-.empty-state {
-  background-color: #ffffff;
-}
-
-/* Responsive layout */
-@media (max-width: 650px) {
-  .dashboard {
-    width: 92%;
+@media (max-width: 380px) {
+  .team-label {
+    max-width: 110px;
   }
 
-  .section-heading {
-    gap: 12px;
-    flex-wrap: wrap;
+  .create-card h2,
+  .section-heading h2 {
+    font-size: 20px;
   }
 
-  .link-meta {
-    flex-wrap: wrap;
-  }
-}
-
-/* Fix heading visibility */
-.welcome h1,
-.create-card h2,
-.section-heading h2,
-.link-info h2,
-.empty-state h2 {
-  color: #27213a;
-}
-
-/* Keep highlighted heading text purple */
-.welcome h1 span {
-  color: #6046d8;
-}
-
-/* Keep form fields readable */
-.create-form input {
-  color: #27213a;
-  background-color: #ffffff;
-}
-
-.create-form input::placeholder {
-  color: #858095;
-  opacity: 1;
-}
-
-/* Keep cards and dashboard in light mode */
-.stat-card,
-.create-card,
-.link-card,
-.empty-state {
-  background-color: #ffffff;
-}
-
-/* Responsive layout */
-@media (max-width: 650px) {
-  .dashboard {
-    width: 92%;
+  .link-actions {
+    flex-direction: column;
   }
 
-  .section-heading {
-    gap: 12px;
-    flex-wrap: wrap;
-  }
-
-  .link-meta {
-    flex-wrap: wrap;
-  }
-}
-
-/* Fix heading visibility */
-.welcome h1,
-.create-card h2,
-.section-heading h2,
-.link-info h2,
-.empty-state h2 {
-  color: #27213a;
-}
-
-/* Keep highlighted heading text purple */
-.welcome h1 span {
-  color: #6046d8;
-}
-
-/* Keep form fields readable */
-.create-form input {
-  color: #27213a;
-  background-color: #ffffff;
-}
-
-.create-form input::placeholder {
-  color: #858095;
-  opacity: 1;
-}
-
-/* Keep cards and dashboard in light mode */
-.stat-card,
-.create-card,
-.link-card,
-.empty-state {
-  background-color: #ffffff;
-}
-
-/* Responsive layout */
-@media (max-width: 650px) {
-  .dashboard {
-    width: 92%;
-  }
-
-  .section-heading {
-    gap: 12px;
-    flex-wrap: wrap;
-  }
-
-  .link-meta {
-    flex-wrap: wrap;
+  .link-actions button {
+    width: 100%;
   }
 }
