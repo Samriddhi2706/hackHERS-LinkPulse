@@ -326,3 +326,150 @@ footer {
     flex: 1;
   }
 }
+
+/* Fix heading visibility */
+.welcome h1,
+.create-card h2,
+.section-heading h2,
+.link-info h2,
+.empty-state h2 {
+  color: #27213a;
+}
+
+/* Keep highlighted heading text purple */
+.welcome h1 span {
+  color: #6046d8;
+}
+
+/* Keep form fields readable */
+.create-form input {
+  color: #27213a;
+  background-color: #ffffff;
+}
+
+.create-form input::placeholder {
+  color: #858095;
+  opacity: 1;
+}
+
+/* Keep cards and dashboard in light mode */
+.stat-card,
+.create-card,
+.link-card,
+.empty-state {
+  background-color: #ffffff;
+}
+
+/* Responsive layout */
+@media (max-width: 650px) {
+  .dashboard {
+    width: 92%;
+  }
+
+  .section-heading {
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+
+  .link-meta {
+    flex-wrap: wrap;
+  }
+}
+
+/* Fix heading visibility */
+.welcome h1,
+.create-card h2,
+.section-heading h2,
+.link-info h2,
+.empty-state h2 {
+  color: #27213a;
+}
+
+/* Keep highlighted heading text purple */
+.welcome h1 span {
+  color: #6046d8;
+}
+
+/* Keep form fields readable */
+.create-form input {
+  color: #27213a;
+  background-color: #ffffff;
+}
+
+.create-form input::placeholder {
+  color: #858095;
+  opacity: 1;
+}
+
+/* Keep cards and dashboard in light mode */
+.stat-card,
+.create-card,
+.link-card,
+.empty-state {
+  background-color: #ffffff;
+}
+
+/* Responsive layout */
+@media (max-width: 650px) {
+  .dashboard {
+    width: 92%;
+  }
+
+  .section-heading {
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+
+  .link-meta {
+    flex-wrap: wrap;
+  }
+}
+
+/* Fix heading visibility */
+.welcome h1,
+.create-card h2,
+.section-heading h2,
+.link-info h2,
+.empty-state h2 {
+  color: #27213a;
+}
+
+/* Keep highlighted heading text purple */
+.welcome h1 span {
+  color: #6046d8;
+}
+
+/* Keep form fields readable */
+.create-form input {
+  color: #27213a;
+  background-color: #ffffff;
+}
+
+.create-form input::placeholder {
+  color: #858095;
+  opacity: 1;
+}
+
+/* Keep cards and dashboard in light mode */
+.stat-card,
+.create-card,
+.link-card,
+.empty-state {
+  background-color: #ffffff;
+}
+
+/* Responsive layout */
+@media (max-width: 650px) {
+  .dashboard {
+    width: 92%;
+  }
+
+  .section-heading {
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+
+  .link-meta {
+    flex-wrap: wrap;
+  }
+}
